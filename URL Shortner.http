@@ -1,6 +1,14 @@
 @URL_Shortner_HostAddress = http://localhost:5135
 
-GET {{URL_Shortner_HostAddress}}/weatherforecast/
-Accept: application/json
+### Create a new user
+POST {{URL_Shortner_HostAddress}}/api/links
+Content-Type: application/json
+
+{
+  "longurl": "https://www.google.com/"
+}
+
+###
+GET {{URL_Shortner_HostAddress}}/0a14aad
 
 ###
