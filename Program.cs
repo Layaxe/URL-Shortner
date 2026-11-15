@@ -1,5 +1,6 @@
 
 using Scalar.AspNetCore;
+using URL_Shortner.Services;
 
 namespace URL_Shortner
 {
@@ -14,6 +15,11 @@ namespace URL_Shortner
 
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddOpenApi();
+
+            // Stuff I added
+            builder.Services.Configure<SnowflakeIdOptions>(builder.Configuration.GetSection("Snowflake"));
+            builder.Services.AddSingleton(TimeProvider.System);
+            builder.Services.AddSingleton<IIdGenerator, SnowflakeIdGenerator>();
 
             var app = builder.Build();
 

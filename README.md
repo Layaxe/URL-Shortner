@@ -16,3 +16,9 @@ The code generation will be modular so we can replace it easily; the current foc
 another generation method will be used.
 The database depends on the use case and needs, but Non-relational databases work well with this kind of heavy read service; relational databases also work fine and could be a better choice. 
 If auto-increment were the method to generate code.
+
+### Design Decisions
+#### SnowflakeID
+We use Snowflake to generate a unique id for each request so we can use them in the encoding process.
+Snowflake ID consist of 64 bit: 1 sign bit + 41 Timestamp bits + 10 worker bits + 12 sequence bits. (Usually 10 worker bits will be 5 worker bits and 5 datacenter bits but I don't have 
+this stuff so simple it is).
