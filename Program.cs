@@ -20,6 +20,7 @@ namespace URL_Shortner
             builder.Services.Configure<SnowflakeIdOptions>(builder.Configuration.GetSection("Snowflake"));
             builder.Services.AddSingleton(TimeProvider.System);
             builder.Services.AddSingleton<IIdGenerator, SnowflakeIdGenerator>();
+            builder.Services.AddScoped<UrlService, UrlService>();
 
             var app = builder.Build();
 

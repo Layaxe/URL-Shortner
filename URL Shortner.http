@@ -1,7 +1,7 @@
 @URL_Shortner_HostAddress = http://localhost:5135
 
-### Create a new user
-POST {{URL_Shortner_HostAddress}}/api/links
+### Create a new short link
+POST {{URL_Shortner_HostAddress}}/api/urls
 Content-Type: application/json
 
 {
@@ -9,6 +9,6 @@ Content-Type: application/json
 }
 
 ###
-GET {{URL_Shortner_HostAddress}}/0a14aad
+GET {{URL_Shortner_HostAddress}}/8becpqq3LU
 
 ###

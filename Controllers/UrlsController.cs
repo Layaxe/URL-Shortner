@@ -1,14 +1,21 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Collections.Concurrent;
 using URL_Shortner.DTOs;
+using URL_Shortner.Services;
 
 namespace URL_Shortner.Controllers
 {
     [Route("api/[controller]")] // api/links
     [ApiController]
-    public class LinksController : ControllerBase
+    public class UrlsController : ControllerBase
     {
         private static readonly ConcurrentDictionary<string, string> Links = new(); // Concurrent Dici because multiple request's can run at the same time
+        private readonly UrlService _urlService;
+
+        public UrlsController(UrlService urlService)
+        {
+            _urlService = urlService;
+        }
 
         [HttpPost]
         public IActionResult CreateShortURL([FromBody] CreateLinkRequest request)
@@ -19,7 +26,7 @@ namespace URL_Shortner.Controllers
                 return BadRequest("Url must be a valid http or https address.");
             }
 
-            var code = Guid.NewGuid().ToString("N")[..7]; // This will be routed to a service, and we will use snowflake id with base62 so no collisions
+            var code = _urlService.CreateShortCode(request);
 
             Links[code] = request.LongUrl;
 
