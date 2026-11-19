@@ -4,7 +4,7 @@ There will be no Aliases, Experiy URL, User related accounting.
 
 ### Project Milestones
 - [X] Implement a simple api that takes url convert to short url and redirect it (no database no storage).
-- [ ] Implement a code generation service and use it with the current code flow.
+- [X] Implement a code generation service and use it with the current code flow.
 - [ ] Add database storage and use it.
 - [ ] Containerize the project.
 - [ ] Deploy ? Profit ??
@@ -22,3 +22,7 @@ If auto-increment were the method to generate code.
 We use Snowflake to generate a unique id for each request so we can use them in the encoding process.
 Snowflake ID consist of 64 bit: 1 sign bit + 41 Timestamp bits + 10 worker bits + 12 sequence bits. (Usually 10 worker bits will be 5 worker bits and 5 datacenter bits but I don't have 
 this stuff so simple it is).
+
+#### Repositories
+Since Entity Framework is a layer on top of DbContext a lot will say there no need for repository pattern since you will only use EF and will not replace it. 
+I choose the repository pattern because it's easier for me to test and I want to try it out, so if you don't see use of it don't use it.
