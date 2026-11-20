@@ -1,5 +1,6 @@
 
 using Scalar.AspNetCore;
+using URL_Shortner.Repositories;
 using URL_Shortner.Services;
 
 namespace URL_Shortner
@@ -20,6 +21,7 @@ namespace URL_Shortner
             builder.Services.Configure<SnowflakeIdOptions>(builder.Configuration.GetSection("Snowflake"));
             builder.Services.AddSingleton(TimeProvider.System);
             builder.Services.AddSingleton<IIdGenerator, SnowflakeIdGenerator>();
+            builder.Services.AddSingleton<IShortUrlRepository, InMemoryShortUrlRepository>();
             builder.Services.AddScoped<UrlService, UrlService>();
 
             var app = builder.Build();

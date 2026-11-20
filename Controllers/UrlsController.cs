@@ -9,7 +9,6 @@ namespace URL_Shortner.Controllers
     [ApiController]
     public class UrlsController : ControllerBase
     {
-        private static readonly ConcurrentDictionary<string, string> Links = new(); // Concurrent Dici because multiple request's can run at the same time
         private readonly UrlService _urlService;
 
         public UrlsController(UrlService urlService)
@@ -28,8 +27,6 @@ namespace URL_Shortner.Controllers
 
             var code = _urlService.CreateShortCode(request);
 
-            Links[code] = request.LongUrl;
-
             var shortUrl = $"{Request.Scheme}://{Request.Host}/{code}";
 
             return Ok(new CreateLinkResponse { ShortUrl = shortUrl });
@@ -38,10 +35,13 @@ namespace URL_Shortner.Controllers
         [HttpGet("/{code}")]
         public IActionResult RedirectURL(string code)
         {
-            if (Links.TryGetValue(code, out var longUrl)) { 
-                return Redirect(longUrl); // Return 302 which is temp redirect you can also 301 which is permenant redirect both works but one useful for analysis the other not.
+            var longUrl = _urlService.GetUrl(code);
+
+            if (longUrl == null)
+            {
+                return NotFound();
             }
-            return NotFound();
+            return Redirect(longUrl); // Return 302 which is temp redirect you can also 301 which is permenant redirect both works but one useful for analysis the other not.
         }
     }
 }

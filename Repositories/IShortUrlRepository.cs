@@ -2,8 +2,8 @@
 {
     public interface IShortUrlRepository
     {
-        public void AddNewUrl(long code, string url);
-        public string GetUrl(long code);
+        public void AddNewUrl(string code, string url);
+        public string? GetUrl(string code);
 
     }
 }
