@@ -2,8 +2,8 @@
 {
     public interface IShortUrlRepository
     {
-        public void AddNewUrl(string code, string url);
-        public string? GetUrl(string code);
+        public Task AddAsync(string code, string url);
+        public Task<string?> GetUrlByCodeAsync(string code);
 
     }
 }

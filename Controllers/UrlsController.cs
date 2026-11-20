@@ -17,7 +17,7 @@ namespace URL_Shortner.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateShortURL([FromBody] CreateLinkRequest request)
+        public async Task<IActionResult> CreateShortURL([FromBody] CreateLinkRequest request)
         {
             // This check is curcial since a user could input an Url without http or https which will result in bad redirect so we check that first
             if (!Uri.TryCreate(request.LongUrl, UriKind.Absolute, out var uri) || (uri.Scheme != Uri.UriSchemeHttp && uri.Scheme != Uri.UriSchemeHttps))
@@ -25,7 +25,7 @@ namespace URL_Shortner.Controllers
                 return BadRequest("Url must be a valid http or https address.");
             }
 
-            var code = _urlService.CreateShortCode(request);
+            var code = await _urlService.CreateAsync(request.LongUrl);
 
             var shortUrl = $"{Request.Scheme}://{Request.Host}/{code}";
 
@@ -33,9 +33,9 @@ namespace URL_Shortner.Controllers
         }
 
         [HttpGet("/{code}")]
-        public IActionResult RedirectURL(string code)
+        public async Task<IActionResult> RedirectURL(string code)
         {
-            var longUrl = _urlService.GetUrl(code);
+            var longUrl = await _urlService.GetUrlAsync(code);
 
             if (longUrl == null)
             {

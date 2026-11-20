@@ -14,19 +14,19 @@ namespace URL_Shortner.Services
             _shortUrlRepository = shortUrlRepository;
         }
 
-        public string CreateShortCode(CreateLinkRequest request)
+        public async Task<string> CreateAsync(string longUrl)
         {
             var id = _idGenerator.CreateId();
             var code = Base62Encoder.Encode(id);
 
-            _shortUrlRepository.AddNewUrl(code, request.LongUrl);
+            await _shortUrlRepository.AddAsync(code, longUrl);
 
             return code;
         }
 
-        public string? GetUrl(string code)
+        public async Task<string?> GetUrlAsync(string code)
         {
-            return _shortUrlRepository.GetUrl(code);
+            return await _shortUrlRepository.GetUrlByCodeAsync(code);
         }
     }
 }
