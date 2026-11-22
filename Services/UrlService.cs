@@ -1,4 +1,5 @@
 ﻿using URL_Shortner.DTOs;
+using URL_Shortner.Models;
 using URL_Shortner.Repositories;
 
 namespace URL_Shortner.Services
@@ -19,7 +20,9 @@ namespace URL_Shortner.Services
             var id = _idGenerator.CreateId();
             var code = Base62Encoder.Encode(id);
 
-            await _shortUrlRepository.AddAsync(code, longUrl);
+            ShortUrl shortUrl = new() { Code = code , LongUrl = longUrl};
+
+            await _shortUrlRepository.AddAsync(shortUrl);
 
             return code;
         }
