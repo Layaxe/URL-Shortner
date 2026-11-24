@@ -17,6 +17,12 @@ namespace URL_Shortner.Services
 
         public async Task<string> CreateAsync(string longUrl)
         {
+            // We validate the URL in the service so it can be tested later without controller.
+            if (!Uri.TryCreate(longUrl, UriKind.Absolute, out var uri) || (uri.Scheme != Uri.UriSchemeHttp && uri.Scheme != Uri.UriSchemeHttps))
+            {
+                throw new ArgumentException("URL must use the HTTP/S scheme.", nameof(uri));
+            }
+
             var id = _idGenerator.CreateId();
             var code = Base62Encoder.Encode(id);
 
