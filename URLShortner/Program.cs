@@ -1,9 +1,8 @@
-
 using Scalar.AspNetCore;
-using URL_Shortner.Repositories;
-using URL_Shortner.Services;
+using URLShortner.Repositories;
+using URLShortner.Services;
 
-namespace URL_Shortner
+namespace URLShortner
 {
     public class Program
     {

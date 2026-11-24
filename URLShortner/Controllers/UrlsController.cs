@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Collections.Concurrent;
-using URL_Shortner.DTOs;
-using URL_Shortner.Services;
+using URLShortner.DTOs;
+using URLShortner.Services;
 
-namespace URL_Shortner.Controllers
+namespace URLShortner.Controllers
 {
     [Route("api/[controller]")] // api/links
     [ApiController]

@@ -1,4 +1,4 @@
-﻿namespace URL_Shortner.Services
+﻿namespace URLShortner.Services
 {
     public interface IIdGenerator
     {

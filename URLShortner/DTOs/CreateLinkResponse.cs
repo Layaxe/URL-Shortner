@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace URL_Shortner.DTOs
+namespace URLShortner.DTOs
 {
     public class CreateLinkResponse
     {

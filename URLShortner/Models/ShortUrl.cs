@@ -1,5 +1,4 @@
-﻿
-namespace URL_Shortner.Models
+﻿namespace URLShortner.Models
 {
     public class ShortUrl
     {

@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Options;
 
-namespace URL_Shortner.Services
+namespace URLShortner.Services
 {
     public class SnowflakeIdGenerator : IIdGenerator
     {

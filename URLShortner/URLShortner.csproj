@@ -4,7 +4,7 @@
     <TargetFramework>net10.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <RootNamespace>URL_Shortner</RootNamespace>
+    <RootNamespace>URLShortner</RootNamespace>
     <UserSecretsId>ecca7c42-c7e6-49e7-a9aa-0981e38d0363</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerfileContext>.</DockerfileContext>

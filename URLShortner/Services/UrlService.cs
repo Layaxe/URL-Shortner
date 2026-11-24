@@ -1,8 +1,7 @@
-﻿using URL_Shortner.DTOs;
-using URL_Shortner.Models;
-using URL_Shortner.Repositories;
+﻿using URLShortner.Models;
+using URLShortner.Repositories;
 
-namespace URL_Shortner.Services
+namespace URLShortner.Services
 {
     public class UrlService
     {

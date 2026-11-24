@@ -1,7 +1,7 @@
 ﻿using System.Collections.Concurrent;
-using URL_Shortner.Models;
+using URLShortner.Models;
 
-namespace URL_Shortner.Repositories
+namespace URLShortner.Repositories
 {
     public class InMemoryShortUrlRepository : IShortUrlRepository
     {
