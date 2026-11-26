@@ -1,4 +1,7 @@
 <Solution>
   <Project Path="E:/Programming Space/URL Shortner Full Project/URLShortner/URLShortner.csproj" />
+  <Project Path="docker-compose.dcproj">
+    <Build />
+  </Project>
   <Project Path="E:/Programming Space/URL Shortner Full Project/URLShortner.Tests/URLShortner.Tests.csproj" Id="7052bfc7-394f-476d-930b-caeea990d545" />
 </Solution>
